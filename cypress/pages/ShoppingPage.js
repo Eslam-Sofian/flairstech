@@ -1,10 +1,13 @@
 class ShoppingPage{
     AddToCart (FProductNo){
-    cy.get(' article:nth-child('+FProductNo+') > footer > form > button').click({force :true})
-    cy.get('[data-submit]').click({force :true})
+    cy.get('article:nth-child('+FProductNo+') > a > div.img-c > img').click({force : true})
+    cy.get('#add-to-cart > button > span').click()
     }
     AddMoreQuantity(){
-        cy.get('[aria-label="increase cart quantity"] > .ic > use').click()
+        cy.get('#add-to-cart > button:nth-child(4) > svg > use').click()
+    }
+    OpenCart(){
+        cy.get('.-gy9').click()
     }
     CheckCartItemsNo(){
         cy.get('.-gy9').click()
@@ -30,7 +33,7 @@ CompareItemAndTotal(){
               cy.get('.card > .-i-ctr > .-fs20')
                   .invoke('text')
                   .then((totalPrice) => totalPrice.replace('EGP ', '').trim())
-                  .should('eq',(Number(newEle())*2).toFixed(2));
+                   .should('eq',(Number(newEle())*2).toFixed(2));
           });}
 
           
