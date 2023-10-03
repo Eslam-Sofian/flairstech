@@ -4,6 +4,6 @@ describe('HomeSuit', () => {
     it('VerifyHomePage', () => {
         cy.visit('https://www.jumia.com.eg/')
         HP.ClosePopup()
-        HP.WelcomeMessage().contains('Welcome to Jumia!')
+        HP.CheckHome().contains('Account')
     })
   })

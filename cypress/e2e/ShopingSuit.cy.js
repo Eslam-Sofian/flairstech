@@ -16,6 +16,7 @@ describe('ShopingSuit', () => {
         
     })
     afterEach(() => {
+        SP.ClearCart()
         SP.Logout()
       })
     it('AddToCartItemsValidation', () => {
@@ -28,6 +29,11 @@ describe('ShopingSuit', () => {
         })  
         
     it('CartItemsPriceValidation', () => {
+        cy.fixture('data').as('data')
+       cy.get('@data').then(input => {
+           SP.AddToCart(input.ProductNo)
+       })
+       SP.AddMoreQuantity()
         SP.OpenCart()
         SP.CompareItemAndTotal();
             })  

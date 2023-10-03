@@ -3,9 +3,9 @@ class LoginPage{
    Login(Email,Password){
     const UR = new RegisterPage();
     UR.FirstRegistrationStep(Email)
-    cy.get('.mdc-text-field').type(Password)
-    cy.get('#loginButton > span.mdc-button__touch').click()
-    return cy.get('#jm > header > section > div.col.-df.-j-bet.-m.-phn.-i-ctr > div:nth-child(1) > label')
+    cy.get("input[name='password']").type(Password)
+    cy.get("button[id='loginButton'][type='submit']").click()
+    return cy.get('div:nth-of-type(1)>label.trig')
    }
 
  

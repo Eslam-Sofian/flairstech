@@ -1,27 +1,26 @@
 class ShoppingPage{
     AddToCart (FProductNo){
-    cy.get('article:nth-child('+FProductNo+') > a > div.img-c > img').click({force : true})
-    cy.get('#add-to-cart > button > span').click()
+    cy.get("div[data-catalog='true']>article:nth-of-type("+FProductNo+')').click()
+    cy.get("form[id='add-to-cart']>button[type='button'][name='action']").click()
     }
     AddMoreQuantity(){
-        cy.get('#add-to-cart > button:nth-child(4) > svg > use').click()
+        cy.get("button[type='button'][aria-label='increase cart quantity']").click()
     }
     OpenCart(){
-        cy.get('.-gy9').click()
+        cy.get('a.-df.-i-ctr.-gy9.-hov-or5.-phs').click()
     }
     CheckCartItemsNo(){
-        cy.get('.-gy9').click()
-       return cy.get('.-w-32')
+        cy.get('a.-df.-i-ctr.-gy9.-hov-or5.-phs').click()
+       return cy.get('span.-w-32')
     }
     ClearCart(){
-        cy.get('article > footer > button').click({force : true})
-        cy.get('div > section > div > div > form:nth-child(2) > button').click({force : true})
-        
+        cy.get("button[data-pop-open='removeFromCart']").click()
+        cy.get('button.btn._prim._i.-fw.-fh').click()
     }
    
 Logout(){
-    cy.get('div.col.-df.-j-bet.-m.-phn.-i-ctr > div:nth-child(1) > label').click()
-    cy.get('#dpdw-login-box > div > form > button').click()
+    cy.get("div:nth-of-type(1)>label[for='dpdw-login']").click()
+    cy.get("button[class*='btn'][type='submit']").click()
 }
 CompareItemAndTotal(){
  

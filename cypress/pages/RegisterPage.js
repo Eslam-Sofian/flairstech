@@ -1,28 +1,36 @@
 class RegisterPage{
 
-
+ MakeEmail() {
+        var strValues = "qwertyuiopasdfghjklzxcvbnm12345";
+        var strEmail = "";
+        var strTmp;
+        for (var i = 0; i < 10; i++) {
+            strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));
+            strEmail = strEmail + strTmp;
+        }
+        return strEmail+"@gmail.com";
+    }
 FirstRegistrationStep(Email){
-    cy.get('.mdc-text-field__input', { timeout: 6000 }).type(Email)
-    cy.get('body > div.content-container > div.card > form > div.ctx-identification.flow-layout > div:nth-child(3) > div.mdc-touch-target-wrapper > button > span.mdc-button__touch').click()
+    cy.get('#input_identifierValue').type(Email)
+    cy.get("button[type='submit']").click()
 }
 SecondRegistrationStep(Password){
-    cy.get('#card_password > :nth-child(3) > .mdc-text-field').type(Password)
-    cy.get('#card_password > :nth-child(4) > .mdc-text-field').type(Password)
-    cy.wait(500)
-    cy.get('#card_password > .actions').click({forcr:true})
+    cy.get('input.mdc-text-field__input.password-input').type(Password)
+    cy.get('input.mdc-text-field__input.confirm-password-input').type(Password)
+    cy.get('button.mdc-button.mdc-button--touch.mdc-button--raised.to-personal-details.mdc-ripple-upgraded').click()
 }
 ThirdRegistrationStep(Fname,Lname,Phonenumber){
-    cy.get('#card_profile_details > :nth-child(2) > .mdc-text-field').type(Fname)
-    cy.get('#card_profile_details > :nth-child(3) > .mdc-text-field').type(Lname)
-    cy.get('.phone-number-field > .mdc-text-field').type(Phonenumber)
-    cy.get('#card_profile_details > .actions').click()
+    cy.get("input[name='first_name']").type(Fname)
+    cy.get("input[name='last_name']").type(Lname)
+    cy.get("input[name='phone[number]']").type(Phonenumber)
+    cy.get('button.mdc-button.mdc-button--touch.mdc-button--raised.to-personal-details-part-2.mdc-ripple-upgraded').click()
 }
 ForthRegistrationStep(DateOfBirth){
-    cy.get('#gender > .mdc-select__anchor').click({ force: true })
-    cy.get('[data-value="M"] > .mdc-deprecated-list-item__text').click({force: true})
-    cy.get('#input_birth_date').click({force: true}).type(DateOfBirth)
-    cy.get('#acceptTC').click()
-    cy.get('.center > .actions').click()
+    cy.get('div#gender>div.mdc-select__anchor').click()
+    cy.get('[data-value="M"]').click()
+    cy.get('#input_birth_date').type(DateOfBirth)
+    cy.get('input#acceptTC').click()
+    cy.get('button#confirmBtn').click()
 }
 UserRegister(Email,Password,Fname,Lname,Phonenumber,DateOfBirth){
    this.FirstRegistrationStep(Email)

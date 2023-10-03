@@ -12,7 +12,7 @@ describe('RegisterSuit', () => {
    it('UserRegistrationValidation', () => {
         cy.fixture('data').as('data')
         cy.get('@data').then(input => {
-          UR.UserRegister(input.Email,input.Password,input.FirstName,input.LastName,input.PhoneNumber,input.DateOfBirth).contains(input.FirstName+", Your account has been created!")
+          UR.UserRegister(UR.MakeEmail(),input.Password,input.FirstName,input.LastName,input.PhoneNumber,input.DateOfBirth).contains(input.FirstName+", Your account has been created!")
             })   
   })
     })

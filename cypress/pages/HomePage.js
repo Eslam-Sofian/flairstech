@@ -1,18 +1,18 @@
 class HomePage{
    
-   WelcomeMessage(){ 
-    return cy.get('.-fs29')
+   CheckHome(){ 
+    return cy.get('div.dpdw>label.trig:nth-of-type(1)')
 }
    ClosePopup(){
-    cy.get('.cw > .cls').click()
+    cy.get('button.cls>svg').click()
   }  
   RegisterNavigation(){
-    cy.get(':nth-child(1) > .trig').click()
-    cy.get('#dpdw-login-box > .inbox > .-pam > .btn').click()
+    cy.get('div:nth-of-type(1)>label.trig').click()
+    cy.get('div.-pam.-hr-bb>a.btn').click()
 }
   OpenSupermarket(){
-    cy.get(' div.flyout-w.-fsh0.-fs0 > div > a:nth-child(1)').trigger('mouseover')
-    cy.get('[href="/breads-bakery/"]').click({force: true})
+    cy.get("a[class='itm']:nth-child(1)").scrollIntoView()
+    cy.get('[href="/breads-bakery/"]').click({force:true})
   }
 
 
