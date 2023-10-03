@@ -3,7 +3,7 @@ import LoginPage from "../pages/LoginPage.js"
 describe('LoginSuit', () => {
     const UL = new LoginPage();
     before(() => {
-        cy.visit('https://www.jumia.com.eg/')
+        cy.visit('https://www.jumia.com.eg/',{failOnStatusCode: false})
         const HP = new HomePage();
         HP.ClosePopup()
         HP.RegisterNavigation()

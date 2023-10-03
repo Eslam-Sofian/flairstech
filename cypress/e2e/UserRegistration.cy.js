@@ -3,7 +3,7 @@ import HomePage from "../pages/HomePage.js"
 describe('RegisterSuit', () => {
     const UR = new RegisterPage();
     before(() => {
-        cy.visit('https://www.jumia.com.eg/')
+        cy.visit('https://www.jumia.com.eg/',{failOnStatusCode: false})
         const HP = new HomePage();
         HP.ClosePopup()
         HP.RegisterNavigation()

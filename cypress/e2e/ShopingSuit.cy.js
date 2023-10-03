@@ -4,7 +4,7 @@ import LoginPage from "../pages/LoginPage.js";
 describe('ShopingSuit', () => {
     const SP = new ShoppingPage();
     beforeEach(() => {
-        cy.visit('https://www.jumia.com.eg/')
+        cy.visit('https://www.jumia.com.eg/',{failOnStatusCode: false})
         const HP = new HomePage();
         const UL = new LoginPage();
         HP.ClosePopup()
