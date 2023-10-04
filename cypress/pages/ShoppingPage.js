@@ -22,18 +22,6 @@ class ShoppingPage {
         cy.get("div:nth-of-type(1)>label[for='dpdw-login']").click()
         cy.get("button[class*='btn'][type='submit']").click()
     }
-    CompareItemAndTotal() {
-
-        cy.get("div[class='prc']:first-of-type")
-            .invoke('text')
-            .then((itemPrice) => {
-                const newEle = () => itemPrice.replace('EGP ', '').trim();
-                cy.get("article[class='card']>div[class*='-i-ctr']>p[class^='-fs20']")
-                    .invoke('text')
-                    .then((totalPrice) => totalPrice.replace('EGP ', '').trim())
-                    .should('eq', (Number(newEle()) * 2).toFixed(2));
-            });
-    }
 
     ItemPrice() {
         return cy.get("div[class='prc']:first-of-type")
