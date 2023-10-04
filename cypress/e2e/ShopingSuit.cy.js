@@ -44,5 +44,4 @@ describe('ShopingSuit', () => {
             SP.TotalPrice().should('eq', itemNum);
         });
     })
-
 })
