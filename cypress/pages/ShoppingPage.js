@@ -24,12 +24,11 @@ Logout(){
 }
 CompareItemAndTotal(){
  
-    cy.get('.sd > .prc')
-    .first()
+    cy.get("div[class='prc']:first-of-type")
           .invoke('text')
           .then((itemPrice) => {
               const newEle = () => itemPrice.replace('EGP ', '').trim();
-              cy.get('.card > .-i-ctr > .-fs20')
+              cy.get("article[class='card']>div[class*='-i-ctr']>p[class^='-fs20']")
                   .invoke('text')
                   .then((totalPrice) => totalPrice.replace('EGP ', '').trim())
                    .should('eq',(Number(newEle())*2).toFixed(2));
